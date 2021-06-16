@@ -1,24 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+let [List, setList] = useState([]);
+let [ItemNumber, setItemNumber] = useState(List.length);
 
-//create your first component
+const addItem = e => {
+	setList(List.concat({ label: e.target.value }));
+	e.target.value = "";
+	setItemNumber(ItemNumber + 1);
+};
+
 export function Home() {
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<h1>To Do List</h1>
+			<form>
+				<input
+					type="text"
+					placeholder="What's need to be done?"></input>
+				<button type="button" onClick={addItem}>
+					Add
+				</button>
+				<button type="button">Delete</button>
+			</form>
+			<small>{ItemNumber} Item Left</small>
 		</div>
 	);
 }

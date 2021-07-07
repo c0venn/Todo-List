@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
+import Title from "../component/title";
+import Task from "../component/task";
 
-export function Home() {
-	let [List, setList] = useState([]);
-	let [ItemNumber, setItemNumber] = useState(List.length);
-
-	const addItem = () => {
-		<h1>hola</h1>;
-	};
-
+function Home() {
 	return (
-		<div className="text-center mt-5">
-			<h1>To Do List</h1>
-			<input type="text" placeholder="What's need to be done?"></input>
-			<button type="button" onClick={addItem}>
-				Add
-			</button>
-			<button type="button">Delete</button>
-			<small>{ItemNumber} Item Left</small>
+		<div className="container">
+			<div className="row">
+				<div className="col-7 m-auto mt-3 d-flex justify-content-center">
+					<Title />
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-7 mt-2 m-auto d-flex justify-content.center">
+					<Task />
+				</div>
+			</div>
 		</div>
 	);
 }
+
+export default Home;
